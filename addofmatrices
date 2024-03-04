@@ -1,0 +1,37 @@
+#include<stdio.h>
+int main()
+{
+	int a,b,c,d,A[10][10],B[10][10],C[10][10];
+	printf("enter the rows and coloums:\n ");
+	scanf("%d%d",&c,&d);
+	printf("enter the elements of 1 matrix: \n");
+	
+		for(a=0;a<c;a++)
+		{
+			for(b=0;b<d;b++)
+			{
+				scanf("%d",&A[a][b]);
+			}
+		}
+	
+		printf("enter the elements of 2 matrix:\n");
+	
+		for(a=0;a<c;a++)
+		{
+			for(b=0;b<d;b++)
+			{
+				scanf("%d",&B[a][b]);
+			}
+		}
+			printf("after addition");
+
+	for(a=0;a<c;a++)
+		{
+			for(b=0;b<d;b++)
+			{	
+	C[a][b]=A[a][b]+B[a][b];
+				printf("%d\t",C[a][b]);
+			}
+		}
+		printf("\n");
+}
