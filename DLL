@@ -1,0 +1,156 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+struct node
+{
+	int data;
+	struct node *prev;
+	struct node *next;
+}*n,*head,*tail;
+
+void ins_beg(int num)
+{
+	n=(struct node*)malloc(sizeof(struct node));
+	n->data=num;
+	n->prev=NULL;
+	n->next=NULL;
+	if(head==NULL)
+	{
+		head=n;
+		tail=n;
+	}
+	else
+	{
+		n->next=head;
+		head->prev=n;
+		head=n;
+	}
+}
+
+void ins_end(int num)
+{
+	n=(struct node*)malloc(sizeof(struct node));
+	n->data=num;
+	n->prev=NULL;
+	n->next=NULL;
+	if(head==NULL)
+	{
+		head=n;
+		tail=n;
+	}
+	else
+	{
+		n->prev=tail;
+		tail->next=n;
+		tail=n;
+	}
+}
+
+void ins_mid(int num,int mid_data)
+{
+	n=(struct node*)malloc(sizeof(struct node));
+	struct node *t;
+	n->data=num;
+	n->prev=NULL;
+	n->next=NULL;
+	for(t=head;t->next!=NULL;t=t->next)	
+	{
+		if(t->data==mid_data)
+		{
+			n->next=t->next;
+			t->next->prev=n;
+			t->next=n;
+			n->prev=t;
+			break;
+		}
+	}
+}
+
+void del_beg()
+{
+	struct node *t;
+	t=head;
+	head=t->next;
+	head->prev=NULL;
+	free(t);
+}
+
+void del_end()
+{
+	struct node *t1;
+	t1=tail;
+	t1->prev->next=NULL;
+	tail=t1->prev;
+	free(t1);
+}
+
+void del_mid(int mid)
+{
+	struct node *t2;
+	t2=head;
+	while(t2->next!=NULL)
+	{
+		if(t2->data==mid)
+		{
+			t2->prev->next=t2->next;
+			t2->next->prev=t2->prev;
+			free(t2);
+			break;
+		}
+		t2=t2->next;
+	}
+}
+
+void display()
+{
+	struct node *t3;
+	t3=head;
+	while(t3!=NULL)
+	{
+		printf("%d ",t3->data);
+		t3=t3->next;
+	}
+	printf("\n");
+}
+
+void search(int num)
+{
+	struct node *t4;
+	t4=head;
+	
+	while(t4!=NULL)
+	{
+		if(t4->data==num)
+		{
+			printf("\nfound");
+			break;
+		}
+		t4=t4->next;
+	
+	if(t4==NULL)
+	{
+		printf("\n+not found");
+	}
+}
+}
+
+int main()
+{
+	printf("ANJALI");
+	printf("\n192324137");
+	ins_beg(12);
+	ins_beg(13);
+	ins_end(14);
+	ins_end(16);
+	ins_mid(23,14);
+	printf("\nthe elements are: ");
+	display();
+	del_beg();
+	del_end();
+	del_mid(23);
+	printf("after deleting: ");
+	display();
+	search(14);
+	
+	return 0;
+}
