@@ -1,0 +1,21 @@
+#include<stdio.h>
+int main()
+{
+	int n;
+	long fact=1;
+	printf("enter the num: ");
+	scanf("%d",&n);
+	if(n<0)
+	{
+		printf("factorial of -ve num does not exsit");
+	}
+	else{
+		
+	
+		for(int i=1;i<=n;i++)
+		{
+	fact*=i;
+		}
+		printf("factorial is : %d",fact);
+	}
+}
