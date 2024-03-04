@@ -1,0 +1,35 @@
+#include<stdio.h>
+int main() 
+{ 
+int i,j;
+int n;
+printf("enter the size:");
+scanf("%d",&n);
+int a[n];
+printf("enter the elements: ");
+for(i=0;i<n;i++)
+{
+	scanf("%d",&a[i]);
+}
+     n = sizeof(a)/sizeof(a[0]); 
+
+    int visited[n];
+ 
+    for( i=0; i < n; i++){
+        
+        if(visited[i] == 0){
+            int count = 1;
+          
+            for( j = i+1; j < n; j++) { 
+				 
+				if(a[i] == a[j]) 
+}					count++; 
+					visited[j] = 1; 
+				} 
+			} 
+            if(count > 1)
+                printf("%d ",a[i]);
+        }
+    }
+   return 0; 
+}
