@@ -1,0 +1,51 @@
+#include <stdio.h>
+
+int n;
+int array[100];
+int i;
+void input() {
+  printf("Enter the size: \n");
+  scanf("%d", &n);
+  printf("Enter the elements of the array: "); 
+  for( i=0;i<n;i++)
+   {
+    scanf("%d", &array[i]);
+  }
+}
+
+int binarysearch(int x) {
+  int low = 0;
+  int high = n - 1;
+
+  while (low <= high) {
+    int mid = low + (high - low) / 2;
+
+    if (array[mid] == x)
+      return mid;
+
+    if (array[mid] < x)
+      low = mid + 1;
+
+    else
+      high = mid - 1;
+  }
+
+  return -1;
+}
+
+void element(int x) {
+  int result = binarysearch(x);
+  if (result == -1)
+    printf("Not found");
+  else
+    printf("Element is found. It is present at index %d", result);
+}
+
+int main() {
+	printf("ANJALI  192324137 \n");
+  input();
+  int x;
+  printf("Enter x: \n");
+  scanf("%d",&x);
+  element(x);
+}
