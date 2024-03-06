@@ -1,0 +1,89 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+struct node
+{
+	int data;
+	struct node* next;
+}*n,*top;
+
+void push(int num)
+{
+	struct node* n = (struct node*)malloc(sizeof(struct node));
+	n->data = num;
+	n->next = NULL;
+	
+	if(top == NULL)
+	{
+		top = n;
+	}
+	else
+	{
+		n->next = top;
+		top = n;
+	}
+}
+
+void pop()
+{
+	struct node *t;
+	
+	if(top == NULL)
+	{
+		printf("empty\n");
+		exit(1);
+	}
+	else
+	{
+		t = top;
+		top = t->next;
+		t->next = NULL;
+		free(t);
+	}
+}
+
+int peak()
+{
+	return top->data;
+}
+
+void display()
+{
+	struct node *t;
+	
+	if(top == NULL)
+	{
+		printf("empty\n");
+		exit(1);
+	}
+	else
+	{
+		for(t = top; t != NULL; t = t->next)
+		{
+			printf("%d ",t->data);
+		}
+		printf("\n");
+	}
+}
+
+int main()
+{
+	top = NULL;
+	printf("stack using LL");
+	printf("\nANJALI");
+	printf("\n192324137");
+	printf("\nthe elements are: ");
+	push(12);
+	push(13);
+	push(14);
+	push(15);
+	display();
+	
+	printf("after poping: ");
+	pop();
+	display();
+	
+	printf("peak elements: %d\n",peak());
+	
+	return 0;
+}
